@@ -1,10 +1,17 @@
 import { useEffect, useState } from 'react';
-import { fetchData } from '../services/api';
-import { DataObject } from '../types/types';
+import { fetchData } from '../services/fetchData';
+import { DataPoint } from '../types/types';
 
-export const useFetch = (endpoint: string, fromDate: string, toDate: string) => {
-  const [data, setData] = useState<DataObject[]>([]);
+interface FetchResult {
+  data: DataPoint[];
+  isLoading: boolean;
+  error: string | null;
+}
+
+export const useFetch = (endpoint: string, fromDate: string, toDate: string): FetchResult => {
+  const [data, setData] = useState<DataPoint[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchDataFromApi = async () => {
@@ -12,9 +19,8 @@ export const useFetch = (endpoint: string, fromDate: string, toDate: string) => 
       try {
         const response = await fetchData(endpoint, fromDate, toDate);
         setData(response);
-      } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(`Error fetching ${endpoint} data:`, error);
+      } catch (errorToFetch) {
+        setError(`Error fetching ${endpoint} data: ${errorToFetch instanceof Error ? errorToFetch.message : 'Unknown error'}`);
       } finally {
         setIsLoading(false);
       }
@@ -23,5 +29,5 @@ export const useFetch = (endpoint: string, fromDate: string, toDate: string) => 
     fetchDataFromApi();
   }, [endpoint, fromDate, toDate]);
 
-  return { data, isLoading };
+  return { data, isLoading, error };
 };
