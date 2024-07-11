@@ -1,4 +1,4 @@
-export interface DataObject {
+export interface DataPoint {
   timestamp: string;
   value: number;
 }
