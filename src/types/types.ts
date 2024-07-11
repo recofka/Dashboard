@@ -1,4 +1,4 @@
 export interface DataObject {
-    timestamp: string;
-    value: number;
+  timestamp: string;
+  value: number;
 }
