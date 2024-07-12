@@ -1,6 +1,6 @@
 import { act } from 'react';
 import { createRoot } from 'react-dom/client';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react'
 import { useDateRange } from '../useDateRange';
 import dayjs from 'dayjs';
 
@@ -16,7 +16,16 @@ describe('useDateRange', () => {
     expect(result.current.fromDate).toEqual(initialFromDate);
     expect(result.current.toDate).toEqual(initialToDate);
 
-    root.unmount();
+    const newDate = dayjs('2024-02-01');
+    act(() => {
+      result.current.updateFromDate(newDate);
+    });
+
+    expect(result.current.fromDate).toEqual(newDate);
+
+    act(() => {
+      root.unmount();
+    });
   });
 
   it('should update fromDate correctly', () => {
@@ -32,7 +41,9 @@ describe('useDateRange', () => {
     });
 
     expect(result.current.fromDate).toEqual(newDate);
-    root.unmount();
+    act(() => {
+      root.unmount();
+    });
   });
 
   it('should update toDate correctly', () => {
@@ -49,7 +60,9 @@ describe('useDateRange', () => {
     });
 
     expect(result.current.toDate).toEqual(newDate);
-    root.unmount();
+    act(() => {
+      root.unmount();
+    });
   });
 
   it('should NOT update fromDate when date is null', () => {
