@@ -22,7 +22,5 @@ describe('Graph Component', () => {
     const element = screen.getByText(/2024-07-01/i);
     expect(element).toBeInTheDocument();
   });
-
 });
-
 
