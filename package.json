@@ -13,8 +13,11 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@mui/lab": "^5.0.0-alpha.171",
-    "@mui/material": "^5.16.0",
+    "@mui/material": "^5.16.1",
+    "@mui/x-charts": "^7.10.0",
     "@mui/x-date-pickers": "^7.10.0",
     "axios": "^1.7.2",
     "date-fns": "^3.6.0",
