@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { DataPoint } from '@/types/types';
+import { Box, Typography } from '@mui/material';
 
 interface GraphProps {
   title: string;
@@ -17,7 +18,7 @@ const Graph: React.FC<GraphProps> = ({ title, data, lineColor }) => {
     bar: {
       barThickness: 5,
     },
-    colors: [lineColor || 'blue']
+    colors: [lineColor || 'blue'],
   };
 
   useEffect(() => {
@@ -29,14 +30,34 @@ const Graph: React.FC<GraphProps> = ({ title, data, lineColor }) => {
   }, [data]);
 
   return (
-    <div style={{ width: '100%' }}>
+    <Box
+      component="section"
+      display="flex"
+      flexDirection="column"
+      p={2}
+      mt={2}
+      sx={{
+        borderRadius: '8px',
+        backgroundColor: '#fff',
+        boxShadow: '0 0 6px 2px rgba(0,0,0,.1)',
+      }}
+    >
+      <Typography
+        variant="h2"
+        gutterBottom
+        align="left"
+        color={'#757575'}
+        sx={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+        {title}
+      </Typography>
       <BarChart
-        xAxis={[{ label: title, scaleType: 'band', data: xAxisData }]}
+        grid={{ horizontal: true }}
+        xAxis={[{ label: `${title} per day`, scaleType: 'band', data: xAxisData }]}
         series={[{ data: seriesData }]}
         {...chartSetting}
       >
       </BarChart>
-    </div>
+    </Box>
   );
 }
 
