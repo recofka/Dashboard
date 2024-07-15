@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchData } from '../services/fetchData';
-import { DataPoint } from '../types/types';
+import { DataPoint } from '../model/types';
 
 interface FetchResult {
   data: DataPoint[];
@@ -16,14 +16,12 @@ export const useFetch = (endpoint: string, fromDate: string, toDate: string): Fe
   useEffect(() => {
     const fetchDataFromApi = async () => {
       setIsLoading(true);
-      try {
-        const response = await fetchData(endpoint, fromDate, toDate);
-        setData(response);
-      } catch (fetchError) {
-        setError(`Error fetching ${endpoint} data: ${fetchError instanceof Error ? fetchError.message : 'Unknown error'}`);
-      } finally {
-        setIsLoading(false);
-      }
+      return await fetchData(endpoint, fromDate, toDate)
+        .then((response) =>
+          setData(response))
+        .catch((fetchError) =>
+          setError(`Error fetching ${endpoint} data: ${fetchError instanceof Error ? fetchError.message : 'Unknown error'}`))
+        .finally(() => setIsLoading(false));
     };
 
     fetchDataFromApi();

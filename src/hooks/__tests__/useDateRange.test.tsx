@@ -49,7 +49,7 @@ describe('useDateRange', () => {
   it('should update toDate correctly', () => {
     const initialFromDate = dayjs('2024-01-01');
     const initialToDate = dayjs('2024-01-31');
-    const container = document.createElement('div'); // Create a temporary container
+    const container = document.createElement('div');
     const root = createRoot(container);
 
     const { result } = renderHook(() => useDateRange(initialFromDate, initialToDate));
@@ -74,7 +74,7 @@ describe('useDateRange', () => {
       result.current.updateFromDate(null);
     });
 
-    expect(result.current.toDate).toEqual(initialToDate); // toDate should remain unchanged
+    expect(result.current.toDate).toEqual(initialToDate);
   });
 
   it('should NOT update toDate when date is null', () => {
@@ -86,6 +86,6 @@ describe('useDateRange', () => {
       result.current.updateToDate(null);
     });
 
-    expect(result.current.toDate).toEqual(initialToDate); // toDate should remain unchanged
+    expect(result.current.toDate).toEqual(initialToDate);
   });
 });

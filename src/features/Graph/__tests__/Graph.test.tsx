@@ -10,13 +10,13 @@ const mockData = [
 describe('Graph Component', () => {
   it('should renders the Graph component with title', () => {
     render(<Graph title="Test Graph" data={mockData} />);
-    const titleElement = screen.getByText(/Test Graph/i);
+    const titleElement = screen.getByText(/Test Graph per day/i);
     expect(titleElement).toBeInTheDocument();
   });
 
   it('should render the graph with correct data', () => {
     render(
-      <Graph data={mockData} title="Test Graph" lineColor="#8884d8" />
+      <Graph data={mockData} title="Test Graph 2" lineColor="#8884d8" />
     );
 
     const element = screen.getByText(/2024-07-01/i);
