@@ -3,8 +3,9 @@ import { useFetch } from '../../hooks/useFetch';
 import { useDateRange } from '../../hooks/useDateRange';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import { formatDateForApi } from '../../utils/dateUtils';
+import { prepareChartData } from '../../utils/prepareChartData';
 import DateRangePicker from '../../ui/DateRangePicker/DateRangePicker';
-import Graph from '../Graph/Graph';
+import Graph from '../../ui/Graph/Graph';
 import dayjs from 'dayjs';
 
 const Dashboard: React.FC = () => {
@@ -19,6 +20,9 @@ const Dashboard: React.FC = () => {
 
   const isLoading = revenueLoading || passengersLoading;
   const hasError = Boolean(revenueError || passengersError);
+
+  const revenueChartDisplayData = prepareChartData(revenueData);
+  const passengersChartDisplayData = prepareChartData(passengersData);
 
   return (
     <Box sx={{ gap: 2 }}>
@@ -52,8 +56,8 @@ const Dashboard: React.FC = () => {
         <Typography>Error loading data</Typography>
       ) : (
         <Box>
-          <Graph data={revenueData} title="Total Revenue" lineColor="#8884d8" />
-          <Graph data={passengersData} title="Total Passengers" lineColor="#82ca9d" />
+          <Graph data={revenueChartDisplayData} title="Total Revenue" lineColor="#8884d8" />
+          <Graph data={passengersChartDisplayData} title="Total Passengers" lineColor="#82ca9d" />
         </Box>
       )}
     </Box>

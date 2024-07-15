@@ -5,9 +5,14 @@ export interface DataPoint {
   value: number;
 }
 
+interface FormattedChartData {
+  xAxisData: string[];
+  seriesData: number[];
+}
+
 export interface GraphProps {
   title: string;
-  data: DataPoint[];
+  data: FormattedChartData;
   lineColor?: string;
 }
 
