@@ -23,32 +23,57 @@ const Dashboard: React.FC = () => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Box sx={{ p: 2 }}>
-        <Box sx={{ display: 'flex', gap: 2, mb: 4 }}>
-          <DatePicker
-            label="From"
-            value={fromDate}
-            onChange={(date: Dayjs | null) => updateFromDate(date)}
-          />
-          <DatePicker
-            label="To"
-            value={toDate}
-            onChange={(date: Dayjs | null) => updateToDate(date)}
-          />
+      <Box sx={{ gap: 2 }}>
+        <Box component="section"
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Typography
+            variant="h1"
+            gutterBottom
+            align="left"
+            color={'#7c00a6'}
+            sx={{ fontSize: '3rem', fontWeight: 'bold', letterSpacing: '1.5px' }}
+          >
+            Dashboard Overview
+          </Typography>
+          <Box>
+            <DatePicker
+              label="From"
+              value={fromDate}
+              onChange={(date: Dayjs | null) => updateFromDate(date)}
+              sx={{
+                borderRadius: '8px',
+                backgroundColor: '#fff',
+                margin: '0 4px',
+              }}
+            />
+            <DatePicker
+              label="To"
+              value={toDate}
+              onChange={(date: Dayjs | null) => updateToDate(date)}
+              sx={{
+                borderRadius: '8px',
+                backgroundColor: '#fff',
+                margin: '0 4px',
+              }}
+            />
+          </Box>
         </Box>
-
         {isLoading ? (
           <CircularProgress />
         ) : hasError ? (
           <Typography>Error loading data</Typography>
         ) : (
-          <>
+          <Box>
             <Graph data={revenueData} title="Total Revenue" lineColor="#8884d8" />
             <Graph data={passengersData} title="Total Passengers" lineColor="#82ca9d" />
-          </>
+          </Box>
         )}
       </Box>
-    </LocalizationProvider>
+    </LocalizationProvider >
   );
 };
 
