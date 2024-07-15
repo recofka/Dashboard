@@ -1,12 +1,6 @@
 import { useState } from 'react';
 import { Dayjs } from 'dayjs';
-
-interface DateRangeResult {
-  fromDate: Dayjs;
-  toDate: Dayjs;
-  updateFromDate: (date: Dayjs | null) => void;
-  updateToDate: (date: Dayjs | null) => void;
-}
+import { DateRangeResult } from '@/model/types';
 
 export const useDateRange = (initialFromDate: Dayjs, initialToDate: Dayjs): DateRangeResult => {
   const [fromDate, setFromDate] = useState<Dayjs>(initialFromDate);

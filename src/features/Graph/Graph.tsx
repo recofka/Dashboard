@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
-import { DataPoint } from '@/types/types';
+import { GraphProps } from '@/model/types';
 import { Box, Typography } from '@mui/material';
-
-interface GraphProps {
-  title: string;
-  data: DataPoint[];
-  lineColor?: string;
-}
 
 const Graph: React.FC<GraphProps> = ({ title, data, lineColor }) => {
   const [xAxisData, setXAxisData] = useState<string[]>([]);

@@ -1,30 +1,37 @@
-# React + TypeScript + Vite
+<h1 align="center">Dashboard</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p align="center">
+  <a href="#technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#installation">Installation</a>
+</p>
+<br>
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies
 
-## Expanding the ESLint configuration
+This project was developed with the following technologies:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- [Vite](https://vitejs.dev/)
+- [React.js](https://reactjs.org)
+- [Typescript](https://www.typescriptlang.org/)
+- [Jest](https://jestjs.io/)
+- [Material UI components](https://mui.com/material-ui/all-components/)
 
-- Configure the top-level `parserOptions` property like this:
+## Project
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+The goal is to create a dashboard that shows the total revenue per day and the number of traveling passengers per day.
+
+
+## FE Installation
+
+```bash
+# Clone this repository
+$ git clone git@github.com:recofka/Dashboard
+
+# Install all dependencies running:
+$ npm install
+
+# Start the project with the command:
+$ npm run dev
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list

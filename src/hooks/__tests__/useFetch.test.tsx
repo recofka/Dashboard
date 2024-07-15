@@ -2,7 +2,7 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import { useFetch } from '../useFetch';
 import { fetchData } from '../../services/fetchData';
-import { DataPoint } from '../../types/types';
+import { DataPoint } from '../../model/types';
 
 jest.mock('../../services/fetchData');
 const mockedFetchData = fetchData as jest.MockedFunction<typeof fetchData>;
