@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react';
 import Graph from '../Graph';
 
-const mockData = [
-  { timestamp: '2024-07-01', value: 1126.3970050016592 },
-  { timestamp: '2024-07-02', value: 1233.4099879467929 },
-  { timestamp: '2024-07-03', value: 1049.2452635057316 }
-];
+const mockData =
+{
+  "xAxisData": ["2024-07-01", "2024-07-02"],
+  "seriesData": [10, 20]
+};
 
 describe('Graph Component', () => {
   it('should renders the Graph component with title', () => {
