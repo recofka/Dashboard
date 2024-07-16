@@ -41,6 +41,7 @@
     "@typescript-eslint/parser": "^7.16.0",
     "@vitejs/plugin-react": "^4.3.1",
     "babel-jest": "^29.7.0",
+    "babel-preset-vite": "^1.1.3",
     "eslint": "^8.57.0",
     "eslint-plugin-jest": "^28.6.0",
     "eslint-plugin-jsx-a11y": "^6.9.0",
@@ -61,32 +62,32 @@
     "transformIgnorePatterns": [
       "/node_modules/(?!@mui/x-charts|@mui/material|@babel/runtime|d3-(color|format|interpolate|scale|shape|time|time-format|path|array)|internmap)"
     ],
-  "transform": {
-    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
-  },
-  "testEnvironment": "jest-environment-jsdom",
-  "setupFilesAfterEnv": [
-    "<rootDir>/setup-tests.js"
-  ],
-  "collectCoverage": true,
-  "coverageDirectory": "coverage",
-  "coverageReporters": [
-    "json",
-    "lcov",
-    "text",
-    "clover"
-  ],
-  "collectCoverageFrom": [
-    "src/**/*.{js,jsx,ts,tsx}",
-    "!src/**/*.d.ts"
-  ],
-  "coverageThreshold": {
-    "global": {
-      "branches": 80,
-      "functions": 80,
-      "lines": 80,
-      "statements": 80
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    },
+    "testEnvironment": "jest-environment-jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setup-tests.js"
+    ],
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "clover"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.d.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
     }
   }
-}
 }

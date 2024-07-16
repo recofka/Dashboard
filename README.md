@@ -32,6 +32,9 @@ $ git clone git@github.com:recofka/Dashboard
 # Install all dependencies running:
 $ npm install
 
+# Insert the API_URL into the .env file
+VITE_API_URL = 'XXXX'
+
 # Start the project with the command:
 $ npm run dev
 ```

@@ -1,4 +1,9 @@
-import { fetchData, API_URL } from '../fetchData';
+import { fetchData } from '../fetchData';
+
+// API URL MOCK
+jest.mock('../../config', () => ({
+  API_URL: 'https://mockapi.example.com'
+}));
 
 declare let global: {
   fetch: jest.Mock;
@@ -26,7 +31,7 @@ describe('fetchData', () => {
     const result = await fetchData(endpoint, fromDate, toDate);
 
     expect(result).toEqual(mockData);
-    expect(global.fetch).toHaveBeenCalledWith(`${API_URL}/${endpoint}?from=${fromDate}&to=${toDate}`);
+    expect(global.fetch).toHaveBeenCalledWith(`https://mockapi.example.com/${endpoint}?from=${fromDate}&to=${toDate}`);
   });
 
   it('should throw an error when fetch fails', async () => {
@@ -43,7 +48,7 @@ describe('fetchData', () => {
     ) as jest.Mock;
 
     await expect(fetchData(endpoint, fromDate, toDate)).rejects.toThrow('HTTP error! Status: 500');
-    expect(global.fetch).toHaveBeenCalledWith(`${API_URL}/${endpoint}?from=${fromDate}&to=${toDate}`);
+    expect(global.fetch).toHaveBeenCalledWith(`https://mockapi.example.com/${endpoint}?from=${fromDate}&to=${toDate}`);
   });
 
   it('should throw an error when there is a network error', async () => {
@@ -55,6 +60,6 @@ describe('fetchData', () => {
     global.fetch = jest.fn(() => Promise.reject(new Error('Network error'))) as jest.Mock;
 
     await expect(fetchData(endpoint, fromDate, toDate)).rejects.toThrow('Error fetching test-endpoint data: Network error');
-    expect(global.fetch).toHaveBeenCalledWith(`${API_URL}/${endpoint}?from=${fromDate}&to=${toDate}`);
+    expect(global.fetch).toHaveBeenCalledWith(`https://mockapi.example.com/${endpoint}?from=${fromDate}&to=${toDate}`);
   });
 });

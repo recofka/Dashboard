@@ -1,6 +1,5 @@
 import { DataPoint } from '../model/types';
-
-export const API_URL = 'http://localhost:8080/api';
+import { API_URL } from '../config';
 
 export const fetchData = async (endpoint: string, fromDate: string, toDate: string): Promise<DataPoint[]> => {
   const apiUrl = `${API_URL}/${endpoint}?from=${fromDate}&to=${toDate}`;
